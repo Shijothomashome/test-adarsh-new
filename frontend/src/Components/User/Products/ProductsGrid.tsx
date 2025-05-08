@@ -5,6 +5,16 @@ import { useRouter } from "next/navigation";
 
 const ProductsGrid = ({ category, loading, products }: any) => {
     const router =  useRouter()
+
+    if (!category || !products) {
+        return null;
+    }
+    
+    const categoryName = typeof category === 'string' 
+        ? category.charAt(0).toUpperCase() + category.slice(1) 
+        : 'Products';
+
+        
     return (
         <div className="p-4 mt-5">
             <h1 className="text-3xl font-bold text-center mb-8 text-gray-600">{category.charAt(0).toUpperCase() + category.slice(1)}</h1>
